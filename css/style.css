@@ -421,6 +421,13 @@ overflow:hidden;
 .notes li{font-size:.86rem;color:var(--t-2);display:flex;gap:.6rem;}
 .notes li::before{content:"—";color:var(--t-3);flex:none;}
 
+/* origin story */
+.origin-box{border:1px solid var(--line);border-radius:14px;padding:2rem 2.4rem;}
+.origin-box p{font-size:.95rem;color:var(--t-2);line-height:1.8;margin-bottom:1rem;}
+.origin-box p:last-child{margin-bottom:0;}
+.origin-goal{margin-top:1.4rem!important;}
+.origin-goal strong{color:var(--t-1);font-family:'Figtree';font-weight:700;font-size:1rem;}
+
 /* detail CTA */
 .det-cta{
   margin-top:1rem;border:1px solid var(--line);border-radius:18px;overflow:hidden;
