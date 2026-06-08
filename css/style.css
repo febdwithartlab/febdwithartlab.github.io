@@ -569,3 +569,71 @@ overflow:hidden;
   background:#fff;
   transform:scale(1.25);
 }
+
+/* ============================================================
+   VIDEO (demo + full walkthrough) — YouTube facade
+   ============================================================ */
+.video-demo{display:grid;grid-template-columns:1.45fr .85fr;gap:1.6rem;align-items:center;}
+.yt-facade{position:relative;border:1px solid var(--line);border-radius:14px;overflow:hidden;aspect-ratio:16/9;cursor:pointer;background:#000;}
+.yt-facade img{width:100%;height:100%;object-fit:cover;opacity:.7;transition:opacity .25s;}
+.yt-facade:hover img{opacity:.92;}
+.yt-facade .yt-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+.yt-facade .yt-play span{
+  width:4.2rem;height:4.2rem;border-radius:50%;
+  background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.25);
+  display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s;
+}
+.yt-facade:hover .yt-play span{transform:scale(1.08);background:var(--purple);}
+.yt-facade .yt-play svg{width:1.5rem;height:1.5rem;fill:#fff;margin-left:3px;}
+.yt-facade .yt-cap{
+  position:absolute;left:0;right:0;bottom:0;padding:.85rem 1rem;
+  font-family:'Figtree';font-weight:700;font-size:.92rem;color:#fff;
+  background:linear-gradient(0deg,rgba(0,0,0,.78),transparent);pointer-events:none;
+}
+.yt-facade iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.vd-aside .ws-title{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);margin-bottom:1rem;}
+.what-see{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
+.what-see li{display:flex;align-items:flex-start;gap:.65rem;font-size:.92rem;color:var(--t-2);}
+.what-see svg{width:1.05rem;height:1.05rem;flex:none;margin-top:.15rem;stroke:var(--green);fill:none;}
+.vd-watch{margin-top:1.4rem;}
+
+/* ---------- Latest update card ---------- */
+.update-card{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:1.5rem 1.6rem;display:flex;gap:1.3rem;align-items:flex-start;}
+.uc-ver{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--pink);border:1px solid var(--line);border-radius:1rem;padding:.32rem .7rem;white-space:nowrap;flex:none;}
+.uc-body .uc-label{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--t-3);}
+.uc-body ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-top:.55rem;}
+.uc-body li{font-size:.88rem;color:var(--t-2);display:flex;gap:.55rem;}
+.uc-body li svg{width:1rem;height:1rem;flex:none;margin-top:.18rem;stroke:var(--green);fill:none;}
+
+/* ---------- Mid-page CTA ---------- */
+.midcta{
+  border:1px solid var(--line);border-radius:14px;
+  background:radial-gradient(120% 130% at 0% 0%,rgba(0,116,255,.18),var(--panel) 60%);
+  padding:1.6rem 1.8rem;display:flex;align-items:center;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;
+}
+.midcta-t b{font-family:'Figtree';font-weight:800;font-size:1.15rem;display:block;}
+.midcta-t span{font-size:.85rem;color:var(--t-2);}
+.midcta .buy-btn{width:auto;white-space:nowrap;padding:.85rem 1.6rem;}
+
+/* ---------- Sticky mobile buy bar ---------- */
+.sticky-buy{
+  position:fixed;left:0;right:0;bottom:0;z-index:54;display:none;
+  align-items:center;justify-content:space-between;gap:1rem;
+  background:rgba(0,0,0,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);
+  padding:.65rem 1rem;transform:translateY(110%);transition:transform .3s ease;
+}
+.sticky-buy.show{transform:translateY(0);}
+.sb-info{display:flex;flex-direction:column;line-height:1.25;}
+.sb-info .sb-name{font-size:.7rem;color:var(--t-3);}
+.sb-info .sb-price b{font-family:'Figtree';font-weight:800;font-size:1.1rem;}
+.sb-info .sb-price s{font-size:.72rem;color:var(--t-3);margin-left:.35rem;}
+.sticky-buy .buy-btn{width:auto;padding:.7rem 1.25rem;font-size:.92rem;box-shadow:none;}
+
+@media (max-width:920px){.video-demo{grid-template-columns:1fr;}}
+@media (max-width:600px){
+  .sticky-buy{display:flex;}
+  .sticky-buy.show ~ .fab{transform:translateY(-3.7rem);}
+  .update-card{flex-direction:column;gap:.9rem;}
+  .midcta{flex-direction:column;align-items:stretch;}
+  .midcta .buy-btn{width:100%;}
+}

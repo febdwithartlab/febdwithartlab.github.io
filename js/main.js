@@ -89,6 +89,31 @@
     setInterval(tick,1000);
   });
 
+  /* ---------- YouTube facade (click-to-load, lazy) ---------- */
+  document.querySelectorAll('.yt-facade').forEach(function(f){
+    f.addEventListener('click',function(){
+      if(f.querySelector('iframe'))return;                 /* sudah dimuat */
+      var id=f.getAttribute('data-yt')||'';
+      if(!/^[\w-]{11}$/.test(id))return;                   /* placeholder belum diisi */
+      var ifr=document.createElement('iframe');
+      ifr.src='https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';
+      ifr.title='Video';
+      ifr.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+      ifr.setAttribute('allowfullscreen','');
+      f.innerHTML='';
+      f.appendChild(ifr);
+    });
+  });
+
+  /* ---------- Sticky buy-bar (muncul saat CTA hero keluar viewport) ---------- */
+  var stickyBuy=document.querySelector('.sticky-buy'),
+      heroBuy=document.querySelector('.det-hero .buy-btn');
+  if(stickyBuy && heroBuy && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      stickyBuy.classList.toggle('show',!es[0].isIntersecting);
+    },{threshold:0}).observe(heroBuy);
+  }
+
   /* ---------- Hero particles (hanya jika ada #stars) ---------- */
   var cv=document.getElementById('stars');
   if(cv && cv.getContext){
